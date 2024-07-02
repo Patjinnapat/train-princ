@@ -1,0 +1,26 @@
+const data = require("../fixtures/edit_profile_data.json")
+describe('template spec', () => {
+  it('edit profile success', () => {
+    cy.visit('https://portal-qa.medcury.health/auth/login')
+    cy.get('#username').type(data['user'])
+    cy.get('#password').type(data['pass'])
+    cy.get('.btn-login > .v-btn__content').click()
+    cy.get(':nth-child(2) > .v-list-item > .v-list-item__content > .v-list-item__title').click()
+    cy.get('#search-text-box').type(data['phone'])
+    cy.get('tbody > :nth-child(1) > :nth-child(3)').click()
+    cy.get('#edit-customer-btn > .v-btn__content').click()
+    cy.get('#address-text-box').clear()
+    cy.get('#address-text-box').type('111/456')
+    cy.get(':nth-child(7) > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-input__append-inner > .v-input__icon > .v-icon').click()
+    cy.get('#list-item-433-6 > .v-list-item__content > .v-list-item__title').click()
+    cy.get(':nth-child(8) > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-input__append-inner > .v-input__icon > .v-icon').click()
+    cy.wait(1000)
+    cy.get('#list-item-456-0 > .v-list-item__content > .v-list-item__title').click()
+    cy.get(':nth-child(9) > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-input__append-inner > .v-input__icon > .v-icon').click()
+    cy.wait(1000)
+    cy.get('#list-item-460-0 > .v-list-item__content > .v-list-item__title').click()
+    cy.get('#edit-save-btn > .v-btn__content').click()
+
+
+  })
+})
